@@ -1,2 +1,2 @@
 # Multi-Armed-Bandit
-Reinforcement learning solution to multi-armed bandit problem
+Reinforcement learning solution to stationary multi-armed bandit problem
