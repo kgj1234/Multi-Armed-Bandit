@@ -8,6 +8,7 @@ from matplotlib import pyplot as plt
 import Subsidiary_Functions as SF
 import numpy as np
 epsilon_values=[0,.01,.1,.5]
+#Simulate to 2000 multi armed bandits using different epsilon parameters
 def simulate_bandits(epsilon_values,T=1000):
     init_rewards=SF.Initialize_Rewards()
     

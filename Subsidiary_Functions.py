@@ -8,10 +8,13 @@ import numpy as np
 #Initialize_Bandit_Rewards, n indicates number of bandits
 def Initialize_Rewards(n=10):
     return np.random.normal(size=(n))
+#Add noise to received rewards at each step
 def Calculate_Reward_Received(state,rewards):
     return rewards[state]+np.random.normal()
+#Update expected rewards for each action
 def Update_State_Value(state,times_explored,current_values,reward):
     return current_values[state]+1/times_explored[state]*(reward-current_values[state])
+#Stochastically select either the action most likely to give sucess, or a random action
 def Select_Action(current_values,epsilon):
     val=np.random.rand()
     if val>1-epsilon:
@@ -23,6 +26,7 @@ def Learn_Bandit(rewards,epsilon=0,T=1000):
     current_expected_values=np.zeros(len(rewards))
     current_explored=np.ones((len(rewards)))
     values_received=[]
+    #Simulate learning process
     for i in range(T):
         new_state=Select_Action(current_expected_values,epsilon)
         curr_reward=Calculate_Reward_Received(new_state,rewards)
